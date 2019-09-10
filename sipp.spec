@@ -15,10 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define release    el%{?centos}.centos
+%define packager   <martingil.luis@gmail.com>
+%define fullname    %{rpmname}-%{pversion}-%{release}
 
 Name:           sipp
 Version:        3.6.0
-Release:        0
+Release:	%{release}
 Summary:        A SIP protocol testing tool
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
