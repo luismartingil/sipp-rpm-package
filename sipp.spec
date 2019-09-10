@@ -11,12 +11,12 @@ URL:		https://github.com/SIPp/sipp
 Source0:	https://github.com/SIPp/sipp/archive/v%{version}/%{name}-%{version}.tar.gz
 # Patch1:		file://sipp-0001-Removal-of-bundled-gmock-gtest.patch
 BuildRequires:  autoconf
-BuildRequires:	autoconf-archive
+# BuildRequires:	autoconf-archive
 BuildRequires:  automake
 BuildRequires:	gmock-devel
 BuildRequires:	gtest-devel
 BuildRequires:  gcc-c++
-BuildRequires:  help2man
+# BuildRequires:  help2man
 BuildRequires:  libpcap-devel
 BuildRequires:	libtool
 BuildRequires:  lksctp-tools-devel
@@ -45,7 +45,7 @@ retransmission management and dynamically adjustable call rates.
 autoreconf -ivf
 echo "#define SIPP_VERSION \"v%{version}\"" > include/version.h
 %configure --with-pcap --with-sctp --with-openssl --with-gsl --with-rtpstream
-make %{?_smp_mflags}
+make CPPFLAGS=-std=gnu++0x %{?_smp_mflags}
 
 
 %install
